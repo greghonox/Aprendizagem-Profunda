@@ -37,5 +37,17 @@ print(reverse_palavra)
 decode = ' '.join([reverse_palavra.get(i-3, '?') for i in train_data[0]])
 print(decode)
 
+import numpy as np
+def vetorizar_sequencia(sequencias, dimensoes=10000):
+    result = np.zeros((len(sequencias), dimensoes))
+    for i, sequencia in enumerate(sequencias):
+        result[i, sequencia] = 1.
+    return result
 
+x_train = vetorizar_sequencia(train_data)
+x_test = vetorizar_sequencia(test_data)
+print(x_train, x_test)
+
+y_train = np.asarray(train_labels).astype('float32')
+y_test = np.asarray(test_labels).astype('float32')
 
